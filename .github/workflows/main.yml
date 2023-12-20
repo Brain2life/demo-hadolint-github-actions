@@ -17,6 +17,6 @@ jobs:
       - name: Check out code
         uses: actions/checkout@v2
 
-      - name: Run Hadolint
+      - name: Run Hadolint with Config
         run: |
-          docker run --rm -i hadolint/hadolint hadolint -t error - < Dockerfile
+          docker run --rm -i -v $(pwd):/root hadolint/hadolint hadolint -c /root/.hadolint.yaml /root/Dockerfile
