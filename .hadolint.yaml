@@ -1,13 +1,6 @@
 ignored:
   - DL3007 # Example of ignoring a specific rule
-  - DL3008
-  - DL3009
-  - DL3015
 
 override:  
   error:
-    - DL3006 # Treat this rule as an error
-
-  warning: [] # Empty array means treat no rules as warnings
-
-  info: [] # Empty array means treat no rules as info
+    - DL3008 # Treat this rule as an error
