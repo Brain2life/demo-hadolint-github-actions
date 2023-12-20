@@ -17,6 +17,12 @@ jobs:
       - name: Check out code
         uses: actions/checkout@v2
 
-      - name: Run Hadolint with Config
+      - name: Run Hadolint and Generate Report
         run: |
-          docker run --rm -i -v $(pwd):/root hadolint/hadolint hadolint -c /root/.hadolint.yaml /root/Dockerfile
+          docker run --rm -i -v $(pwd):/root hadolint/hadolint hadolint /root/Dockerfile - > hadolint-report.txt
+
+      - name: Upload Hadolint Report
+        uses: actions/upload-artifact@v2
+        with:
+          name: hadolint-report
+          path: hadolint-report.txt
