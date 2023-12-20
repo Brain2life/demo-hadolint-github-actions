@@ -17,13 +17,7 @@ jobs:
       - name: Check out code
         uses: actions/checkout@v2
 
-      - name: Run Hadolint and Generate Report
-        run: |
-          docker run --rm -i -v $(pwd):/root hadolint/hadolint hadolint /root/Dockerfile > hadolint-report.txt || true
-
-      - name: Upload Hadolint Report
-        if: always()
-        uses: actions/upload-artifact@v2
+      - name: Run Hadolint
+        uses: hadolint/hadolint-action@v3.1.0
         with:
-          name: hadolint-report
-          path: hadolint-report.txt
+          dockerfile: "Dockerfile"
